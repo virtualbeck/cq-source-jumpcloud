@@ -9,15 +9,16 @@ import (
 )
 
 var (
-	Version = "development"
+	Version = "v0.0.2"
 )
 
 func Plugin() *source.Plugin {
 	return source.NewPlugin(
-		"-cq-source-jumpcloud",
+		"cq-source-jumpcloud",
 		Version,
 		schema.Tables{
 			resources.UsersTable(),
+			resources.SystemsTable(),
 		},
 		client.New,
 	)

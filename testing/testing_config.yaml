@@ -1,13 +1,13 @@
 # To test, use cloudquery binary with this file as an argument whilst the server is running
 # 1. go run main.go serve
-# 2. (in another window) ./cloudquery sync testing_config.yml
+# 2. (in another window) ./cloudquery sync testing_config.yml #(download here: https://github.com/cloudquery/cloudquery/tags , and look for "cli" tags)
 
 kind: source
 spec:
   name: "jumpcloud"
   registry: "grpc"
   path: "localhost:7777"
-  version: "v1.0.0"
+  version: "v0.0.2"
   tables: 
     ["*"]
   destinations:

@@ -39,7 +39,6 @@ func New(ctx context.Context, logger zerolog.Logger, s specs.Source, opts source
 		JumpCloud: &apiClientV1,
 	}, nil
 }
-
 func config(s, e string) string {
 	envVar := os.Getenv(s)
 	if envVar != "" {
