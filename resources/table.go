@@ -3,7 +3,6 @@ package resources
 import (
 	"context"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/TheJumpCloud/jcapi"
@@ -22,18 +21,21 @@ func UsersTable() *schema.Table {
 	return &schema.Table{
 		Name:      "jumpcloud_users",
 		Resolver:  fetchUsers,
-		Transform: transformers.TransformWithStruct(&jcapi.JCUser{}),
+		Transform: transformers.TransformWithStruct(&jcapi.JCUser{}, transformers.WithPrimaryKeys("Id")),
 	}
 }
 
 func fetchUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	userList, err := apiClientV1.GetSystemUsers(!isGroups)
 	if err != nil {
-		log.Fatalf("Could not read system users, err='%s'\n", err)
+		return fmt.Errorf("Could not read system users, err='%s'\n", err)
 	}
-	fmt.Println(userList)
 
-	return fmt.Errorf("not implemented")
+	for _, user := range userList {
+		res <- user
+	}
+
+	return nil
 }
 
 func config(s, e string) string {
