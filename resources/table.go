@@ -3,18 +3,11 @@ package resources
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/TheJumpCloud/jcapi"
 	"github.com/cloudquery/plugin-sdk/v3/schema"
 	"github.com/cloudquery/plugin-sdk/v3/transformers"
-)
-
-var (
-	apiURL      = config("JUMPCLOUD_API_URL", "https://console.jumpcloud.com/api")
-	apiKey      = config("JUMPCLOUD_API_KEY", "")
-	apiClientV1 = jcapi.NewJCAPI(apiKey, apiURL)
-	isGroups    = true //IDK What this is
+	"github.com/virtualbeck/cq-source-jumpcloud/client"
 )
 
 func UsersTable() *schema.Table {
@@ -26,7 +19,8 @@ func UsersTable() *schema.Table {
 }
 
 func fetchUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	userList, err := apiClientV1.GetSystemUsers(!isGroups)
+	c := meta.(*client.Client)
+	userList, err := c.JumpCloud.GetSystemUsers(false)
 	if err != nil {
 		return fmt.Errorf("Could not read system users, err='%s'\n", err)
 	}
@@ -36,12 +30,4 @@ func fetchUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.Reso
 	}
 
 	return nil
-}
-
-func config(s, e string) string {
-	envVar := os.Getenv(s)
-	if envVar != "" {
-		return envVar
-	}
-	return e
 }
