@@ -54,4 +54,3 @@ make gen-docs
 
 Once the tag is pushed, a new GitHub Actions workflow will be triggered to build the release binaries and create the new release on GitHub.
 To customize the release notes, see the Go releaser [changelog configuration docs](https://goreleaser.com/customization/changelog/#changelog).
-# cq-source-jumpcloud
