@@ -17,7 +17,7 @@ func Plugin() *source.Plugin {
 		"-cq-source-jumpcloud",
 		Version,
 		schema.Tables{
-			resources.SampleTable(),
+			resources.UsersTable(),
 		},
 		client.New,
 	)
