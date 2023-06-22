@@ -1,0 +1,24 @@
+# To test, use cloudquery binary with this file as an argument whilst the server is running
+# 1. go run main.go serve
+# 2. (in another window) ./cloudquery sync testing_config.yml
+
+kind: source
+spec:
+  name: "jumpcloud"
+  registry: "grpc"
+  path: "localhost:7777"
+  version: "v1.0.0"
+  tables: 
+    ["*"]
+  destinations:
+    - "file"
+---
+kind: destination
+spec:
+  name: "file"
+  path: "cloudquery/file"
+  write_mode: "append" # file only supports 'append' mode
+  version: "v3.2.2"
+  spec:
+    path: "data/{{TABLE}}/{{UUID}}.{{FORMAT}}"
+    format: "csv" # supported values are 'csv', 'json' and 'parquet'
