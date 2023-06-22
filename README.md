@@ -1,7 +1,7 @@
 # CloudQuery cq-source-jumpcloud Source Plugin
 
-[![test](https://github.com/cq-source-jumpcloud/actions/workflows/test.yaml/badge.svg)](https://github.com/cq-source-jumpcloud/actions/workflows/test.yaml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/cq-source-jumpcloud)](https://goreportcard.com/report/github.com/cq-source-jumpcloud)
+[![test](https://github.com/virtualbeck/cq-source-jumpcloud/actions/workflows/test.yaml/badge.svg)](https://github.com/virtualbeck/cq-source-jumpcloud/actions/workflows/test.yaml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/virtualbeck/cq-source-jumpcloud)](https://goreportcard.com/report/github.com/virtualbeck/cq-source-jumpcloud)
 
 A cq-source-jumpcloud source plugin for CloudQuery that loads data from cq-source-jumpcloud to any database, data warehouse or data lake supported by [CloudQuery](https://www.cloudquery.io/), such as PostgreSQL, BigQuery, Athena, and many more.
 
