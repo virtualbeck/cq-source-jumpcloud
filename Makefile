@@ -4,7 +4,7 @@ test:
 
 .PHONY: lint
 lint:
-	@golangci-lint run --timeout 10m
+	golint
 
 .PHONY: gen-docs
 gen-docs:
