@@ -1,3 +1,7 @@
+// TODO: Pull in device specs ferda boyz via v2 api
+// TODO: Clean up un-used columns (like passwords)
+// TODO: Provide command execution history (like cloudtrail)
+
 package resources
 
 import (
